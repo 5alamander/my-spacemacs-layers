@@ -27,6 +27,7 @@ values."
      ;; better-defaults
      emacs-lisp
      clojure
+     javascript
      ;; git
      markdown
      ;; org
@@ -37,6 +38,7 @@ values."
      ;; syntax-checking
      ;; version-control
      chinese
+     csharp
 
      ;; my layers
      sa1
@@ -210,6 +212,10 @@ layers configuration. You are free to put any user code."
   (clojure/init-clj-refactor)
   (clojure/init-cider-eval-sexp-fu)
   (clojure/init-align-cljlet)
+
+  ;; javascript
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
 
   ;; org-mode GTD state
   (setq org-todo-keywords

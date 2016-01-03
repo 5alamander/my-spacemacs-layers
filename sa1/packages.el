@@ -98,7 +98,7 @@
     (when font-lock-mode
       (with-no-warnings (font-lock-fontify-buffer)))))
 
-;;; clear memory. no longer needed
+;;; clear memory, no longer needed
 (setq sa1//favg-star-prefix nil)
 (setq sa1//favg-dialog-regex nil)
 (setq sa1//favg-func-regex nil)
