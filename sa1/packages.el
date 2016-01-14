@@ -12,13 +12,15 @@
 
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
-(setq sa1-packages
+ (setq sa1-packages
     '(
       ;; package names go here
       paredit
       bookmark+
       ;; windmove
       ;; hydra with org
+      ;; plantuml-mode
+      ;; puml-mode
       ))
 
 ;; List of packages to exclude.
@@ -32,7 +34,40 @@
   (show-paren-mode)
   ;; set a global key
   (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
-  (global-set-key [M-f12] 'sa1-open-buffer-path))
+  (global-set-key [M-f12] 'sa1-open-buffer-path)
+
+  ;; integrate plantuml with org
+  ;; open the image mode
+  (auto-image-file-mode t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (plantuml . t)))
+  (setq org-plantuml-jar-path
+        (expand-file-name "~/.otherTools/plantuml.jar"))
+
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq org-capture-templates
+        '(("t" "Todo" entry
+           (file+headline (concat org-directory "/gtd.org") "Task")
+           "* TODO %?\n %i\n")
+          ("i" "Inspire" entry
+           (file+headline (concat org-directory "/inspiration.org") "Inspire")
+           "* %?\n %i\n %a %f")
+          ("l" "Link" plain (file (concat org-directory "/links.org"))
+           "- %?\n %x\n")))
+  )
+
+;; (defun sa1/init-puml-mode ()
+;;   "Initialize plantuml-mode"
+;;   (use-package puml-mode
+;;     :init
+;;     (progn
+;;       (message "my-log:: sa1/init-plantuml-mode init")
+;;       (setq puml-plantuml-jar-path "~/.otherTools/plantuml.jar")))
+;;   )
+
 
 (defun sa1/init-paredit ()
   "Initialize my package"
@@ -71,6 +106,7 @@
       (concat sa1//favg-star-prefix "[[:space:]]*\\([[:word:]]*\\)\\(.*\\)"))
 
 ;;; highlight key word of macro
+;;; TODO use keyword instead
 (setq sa1//favg-form-regex
       (concat sa1//favg-star-prefix
               "[[:space:]]*\\(if\\|when\\|seq\\|choice\\|flag\\)"))

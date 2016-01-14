@@ -109,3 +109,7 @@ If the file is emacs lisp, run the byte compiled version if exist."
 
 ;;; TODO, move to keybindings file
 (evil-leader/set-key "fy" 'sa1-copy-buffer-name)
+
+(defun sa1-org-show-all-inline-images ()
+  (interactive)
+  (org-display-inline-images t t))
