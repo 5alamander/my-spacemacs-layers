@@ -32,6 +32,7 @@
   "run some function"
   (message "my-log:: sa1/init-my-package")
   (show-paren-mode)
+
   ;; set a global key
   (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
   (global-set-key [M-f12] 'sa1-open-buffer-path)
@@ -46,6 +47,7 @@
   (setq org-plantuml-jar-path
         (expand-file-name "~/.otherTools/plantuml.jar"))
 
+  ;; org-capture
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
@@ -55,8 +57,14 @@
           ("i" "Inspire" entry
            (file+headline (concat org-directory "/inspiration.org") "Inspire")
            "* %?\n %i\n %a %f")
+          ("n" "Note" entry
+           (file+headline (concat org-directory "/note.org") "Note")
+           "* %?\n %i\n")
           ("l" "Link" plain (file (concat org-directory "/links.org"))
            "- %?\n %x\n")))
+
+  ;; (global-unset-key (kbd "C-S-h"))
+  ;; (global-set-key (kbd "C-S-h") 'windmove-left)
   )
 
 ;; (defun sa1/init-puml-mode ()

@@ -113,3 +113,9 @@ If the file is emacs lisp, run the byte compiled version if exist."
 (defun sa1-org-show-all-inline-images ()
   (interactive)
   (org-display-inline-images t t))
+
+(defun sa1-dos2unix ()
+  "Replace DOS eolns CR LF with Unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))
