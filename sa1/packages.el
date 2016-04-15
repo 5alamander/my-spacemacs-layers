@@ -35,25 +35,25 @@
   ;; paren-mode
   (show-paren-mode)
 
-  ;; js tern mode path
-  (if (eq system-type 'windows-nt)      ; windows need the tern path
-      (setq tern-command                ; the default is '("node" "tern")
-            '("node" "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\tern\\bin\\tern")))
-
   ;; set a global key
   (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
   (global-set-key [M-f12] 'sa1-open-buffer-path)
 
-  ;; integrate plantuml with org
-  ;; open the image mode
-  (auto-image-file-mode t)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (plantuml . t)))
-  (setq org-plantuml-jar-path
-        (expand-file-name "~/.otherTools/plantuml.jar"))
+  ;; when windows
+  (when (eq system-type 'windows-nt)
+    ;; js tern mode path
+    (setq tern-command                  ; the default is '("node" "tern")
+          '("node" "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\tern\\bin\\tern"))
+    ;; integrate plantuml with org
+    ;; open the image mode
+    (auto-image-file-mode t)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (plantuml . t)))
+    (setq org-plantuml-jar-path
+          (expand-file-name "~/.otherTools/plantuml.jar")))
 
   ;; org-capture
   (setq org-default-notes-file (concat org-directory "/notes.org"))
