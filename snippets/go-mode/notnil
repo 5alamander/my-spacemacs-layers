@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : check if it is not nil
+#key : notnil
+#contributor : 
+# --
+if $1 != nil {
+   $0
+}

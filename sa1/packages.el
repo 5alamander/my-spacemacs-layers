@@ -31,10 +31,18 @@
 (defun sa1/init ()
   "run some function"
   (message "my-log:: sa1/init-my-package")
+
+  ;; paren-mode
   (show-paren-mode)
+
+  ;; js tern mode path
+  (if (eq system-type 'windows-nt)      ; windows need the tern path
+      (setq tern-command                ; the default is '("node" "tern")
+            '("node" "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\tern\\bin\\tern")))
 
   ;; set a global key
   (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
+  (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
   (global-set-key [M-f12] 'sa1-open-buffer-path)
 
   ;; integrate plantuml with org
@@ -63,8 +71,10 @@
           ("l" "Link" plain (file (concat org-directory "/links.org"))
            "- %?\n %x\n")))
 
-  ;; (global-unset-key (kbd "C-S-h"))
-  ;; (global-set-key (kbd "C-S-h") 'windmove-left)
+  ;; set evil key-binding
+  (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
   )
 
 ;; (defun sa1/init-puml-mode ()

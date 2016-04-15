@@ -1,4 +1,3 @@
-
 (message "my-log:: sa1-funcs.el")
 
 ;;; temp use yasnippet template
@@ -107,7 +106,31 @@ If the file is emacs lisp, run the byte compiled version if exist."
             (shell-command cmdStr "*run-current-file output*")) ; pop-to-buffer ?
         (message "No recognized program file suffix for this file.")))))
 
-;;; TODO, move to keybindings file
+;;; copy line
+(defun sa1-copy-line-or-region ()
+  (interactive)
+  (if mark-active
+      (kill-ring-save (region-beginning) (region-end))
+    (progn
+      (kill-ring-save (line-beginning-position) (line-end-position))
+      (message "copy line"))))
+
+(global-set-key (kbd "M-w") 'sa1-copy-line-or-region)
+
+;;; cut line
+(defun sa1-cut-line-or-region ()
+  (interactive)
+  (if mark-active
+      (kill-region (region-beginning) (region-end))
+    (progn
+      (kill-region (line-beginning-position) (line-end-position))
+      (message "cut line"))))
+
+;;; move to init function
+;; (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+;; (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+
+;;; replace the default buffer name, TODO, move to keybindings file
 (evil-leader/set-key "fy" 'sa1-copy-buffer-name)
 
 (defun sa1-org-show-all-inline-images ()
