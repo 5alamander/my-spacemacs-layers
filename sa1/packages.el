@@ -55,8 +55,8 @@
     (setq org-plantuml-jar-path
           (expand-file-name "~/.otherTools/plantuml.jar")))
 
-  ;; org-capture
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  ;; org-capture (concat org-directory "/notes.org")
+  (setq org-default-notes-file "~/org/notes.org")
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
         '(("t" "Todo" entry
