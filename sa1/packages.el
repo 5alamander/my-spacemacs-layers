@@ -59,16 +59,16 @@
   (setq org-default-notes-file "~/org/notes.org")
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
-        '(("t" "Todo" entry
+        '(("t" "Todo [region]" entry
            (file+headline (concat org-directory "/gtd.org") "Task")
            "* TODO %?\n %i\n")
-          ("i" "Inspire" entry
+          ("i" "Inspire [region, file-link]" entry
            (file+headline (concat org-directory "/inspiration.org") "Inspire")
            "* %?\n %i\n %a %f")
-          ("n" "Note" entry
+          ("n" "Note [region]" entry
            (file+headline (concat org-directory "/note.org") "Note")
            "* %?\n %i\n")
-          ("l" "Link" plain (file (concat org-directory "/links.org"))
+          ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
            "- %?\n %x\n")))
 
   ;; set evil key-binding
@@ -105,7 +105,7 @@
     (progn
       (message "my-log:: sa1/bookmark+ config")
       ;; set the path before load
-      (setq bookmark-default-file "d:/Emacs/spacemacs/.emacs.d/.cache/bookmarks")))
+      (setq bookmark-default-file "~/.emacs.d/.cache/bookmarks")))
   )
 
 ;; Often the body of an initialize function uses `use-package'
