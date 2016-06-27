@@ -8,7 +8,7 @@
 
      org-todo-keywords
      '((sequence "TODO(t)" "|" "DONE(D)")
-       (type "SIMPLE(s)" "FAST-TRACK(F)" "CONFLICTING(c)" "WAITING(w)" "DUBIOUS(d)"
+       (type "SIMPLE(s)" "FAST-TRACK(F)" "CONFLICTING(C)" "WAITING(w)" "DUBIOUS(d)"
              "|" "MERGED(M)" "CLOSED(c)"))
 
      org-todo-keyword-faces
@@ -20,19 +20,30 @@
      org-default-notes-file "~/org/notes.org"
 
      org-capture-templates
-     '(("t" "Todo [region]" entry
+     '(("t" "Todos")
+       ("tt" "Todo [region]" entry
         (file+headline (concat org-directory "/gtd.org") "Task")
         "* TODO %?\n %i\n" :empty-lines 1)
-       ("i" "Inspire [region, file-link]" entry
+       ("tl" "Todo [region, file-link]" entry
+        (file+headline (concat org-directory "/gtd.org") "Task")
+        "* TODO %?\n %i\n %a %f" :empty-lines 1)
+
+       ("i" "Inspires")
+       ("ii" "Inspire [region]" entry
         (file+headline (concat org-directory "/inspiration.org") "Inspire")
-        "* %?\n %i\n %a %f" :empty-lines 1)
+        "* %?\n %i\n" :empty-lines 1)
+       ("ia" "Inspire [region, clipboard, file-link]" entry
+        (file+headline (concat org-directory "/inspiration.org") "Inspire")
+        "* %?\n %i\n %x\n %a %f" :empty-lines 1)
+
        ("n" "Notes")
-       ("ng" "Note General" entry
-        (file+headline (concat org-directory "/note.org") "Note")
-        "* %?\n%i\n%U" :empty-lines 1)
-       ("nt" "Note [region & time]" entry
+       ("nn" "Note [region]" entry
         (file+headline (concat org-directory "/note.org") "Note")
         "* %?\n %i\n" :empty-lines 1)
+       ("nt" "Note [region & time]" entry
+        (file+headline (concat org-directory "/note.org") "Note")
+        "* %?\n %i\n%U" :empty-lines 1)
+
        ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
         "- %?\n %x\n" :empty-lines 1))
      )
