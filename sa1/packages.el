@@ -55,21 +55,21 @@
     (setq org-plantuml-jar-path
           (expand-file-name "~/.otherTools/plantuml.jar")))
 
-  ;; org-capture (concat org-directory "/notes.org")
-  (setq org-default-notes-file "~/org/notes.org")
-  (global-set-key (kbd "C-c c") 'org-capture)
-  (setq org-capture-templates
-        '(("t" "Todo [region]" entry
-           (file+headline (concat org-directory "/gtd.org") "Task")
-           "* TODO %?\n %i\n")
-          ("i" "Inspire [region, file-link]" entry
-           (file+headline (concat org-directory "/inspiration.org") "Inspire")
-           "* %?\n %i\n %a %f")
-          ("n" "Note [region]" entry
-           (file+headline (concat org-directory "/note.org") "Note")
-           "* %?\n %i\n")
-          ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
-           "- %?\n %x\n")))
+  ;; ;; org-capture (concat org-directory "/notes.org")
+  ;; (setq org-default-notes-file "~/org/notes.org")
+  ;; (global-set-key (kbd "C-c c") 'org-capture)
+  ;; (setq org-capture-templates
+  ;;       '(("t" "Todo [region]" entry
+  ;;          (file+headline (concat org-directory "/gtd.org") "Task")
+  ;;          "* TODO %?\n %i\n")
+  ;;         ("i" "Inspire [region, file-link]" entry
+  ;;          (file+headline (concat org-directory "/inspiration.org") "Inspire")
+  ;;          "* %?\n %i\n %a %f")
+  ;;         ("n" "Note [region]" entry
+  ;;          (file+headline (concat org-directory "/note.org") "Note")
+  ;;          "* %?\n %i\n")
+  ;;         ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
+  ;;          "- %?\n %x\n")))
 
   ;; set evil key-binding
   (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)

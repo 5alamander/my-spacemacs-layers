@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : Unity Debug.Log
+#key : log
+#contributor : byy
+# --
+Debug.Log("$0");
