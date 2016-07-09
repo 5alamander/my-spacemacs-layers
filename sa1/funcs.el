@@ -40,8 +40,28 @@ the run input `labda' (functor window other-window)"
                      "/" "\\" (file-name-directory name) t t)))
     (shell-command
      (concat "explorer /select, "
-              (cond ((eq choice ?i) file-name)
-                    ((eq choice ?o) directory))))))
+             (cond ((eq choice ?i) file-name)
+                   ((eq choice ?o) directory))))))
+
+(defun sa1-open-buffer-path-osx (choice)
+  "Run explorer on the directory of this buffer. [OSX]"
+  (interactive "cOpen directory (I) in, (O) out")
+  (let* ((file-name (if (eq major-mode 'dired-mode)
+                        (dired-get-filename)
+                      (or (buffer-file-name) "")))
+         (directory (file-name-directory file-name)))
+    (shell-command
+     (concat "open -R "
+             (cond ((eq choice ?i) file-name)
+                   ((eq choice ?o) directory))))))
+
+(defun sa1-open-directory-shell ()
+  (interactive)
+  (let* ((file-name (if (eq major-mode 'dired-mode)
+                        (dired-get-filename)
+                      (or (buffer-file-name) "")))
+         (directory (file-name-directory file-name)))
+    (shell-command (concat "open -a terminal " directory))))
 
 ;;; set to "fy", replace the "spacemacs/show-and-copy-buffer-filename"
 (defun sa1-copy-buffer-name (choice)

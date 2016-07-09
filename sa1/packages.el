@@ -38,7 +38,11 @@
   ;; set a global key
   (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
-  (global-set-key [M-f12] 'sa1-open-buffer-path)
+  (global-set-key [M-f12] (case system-type
+                            ('windows-nt 'sa1-open-buffer-path)
+                            ('darwin 'sa1-open-buffer-path-osx)))
+  ;; TODO for windows and mac
+  (global-set-key [f9] 'sa1-open-directory-shell)
 
   ;; when windows
   (when (eq system-type 'windows-nt)
@@ -54,22 +58,6 @@
        (plantuml . t)))
     (setq org-plantuml-jar-path
           (expand-file-name "~/.otherTools/plantuml.jar")))
-
-  ;; ;; org-capture (concat org-directory "/notes.org")
-  ;; (setq org-default-notes-file "~/org/notes.org")
-  ;; (global-set-key (kbd "C-c c") 'org-capture)
-  ;; (setq org-capture-templates
-  ;;       '(("t" "Todo [region]" entry
-  ;;          (file+headline (concat org-directory "/gtd.org") "Task")
-  ;;          "* TODO %?\n %i\n")
-  ;;         ("i" "Inspire [region, file-link]" entry
-  ;;          (file+headline (concat org-directory "/inspiration.org") "Inspire")
-  ;;          "* %?\n %i\n %a %f")
-  ;;         ("n" "Note [region]" entry
-  ;;          (file+headline (concat org-directory "/note.org") "Note")
-  ;;          "* %?\n %i\n")
-  ;;         ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
-  ;;          "- %?\n %x\n")))
 
   ;; set evil key-binding
   (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
