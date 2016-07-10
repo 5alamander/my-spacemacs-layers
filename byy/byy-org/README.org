@@ -13,7 +13,8 @@
 
 * Description
 This layer does wonderful things:
-  - thing01
+  - org-capture
+  - org-todo-keywords
 
 * Install
 To use this contribution add it to your =~/.spacemacs=
@@ -24,6 +25,9 @@ To use this contribution add it to your =~/.spacemacs=
 
 * Key bindings
 
-| Key Binding     | Description    |
-|-----------------+----------------|
-| ~<SPC> x x x~   | Does thing01   |
+| Key Binding   | Description       |
+|---------------+-------------------|
+| ~<SPC> x x x~ | Does thing01      |
+| ~C-c c~       | org-capture       |
+| ~C-c C-t~     | org-todo-keywords |
+
