@@ -43,6 +43,7 @@
                             ('darwin 'sa1-open-buffer-path-osx)))
   ;; TODO for windows and mac
   (global-set-key [f9] 'sa1-open-directory-shell)
+  (global-set-key [f10] 'delete-frame)
 
   ;; when windows
   (when (eq system-type 'windows-nt)
