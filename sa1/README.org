@@ -1,0 +1,9 @@
+#+startup: showall
+
+* Sa1 Layer
+
+** do some temp config
+   
+* TASKS
+
+** TODO slime-company

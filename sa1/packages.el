@@ -21,6 +21,7 @@
       ;; hydra with org
       ;; plantuml-mode
       ;; puml-mode
+      ;; slime-company
       ))
 
 ;; List of packages to exclude.
@@ -31,6 +32,8 @@
 (defun sa1/init ()
   "run some function"
   (message "my-log:: sa1/init-my-package")
+
+  ;; (slime-setup '(slime-fancy slime-company))
 
   ;; paren-mode
   (show-paren-mode)
@@ -43,7 +46,8 @@
                             ('darwin 'sa1-open-buffer-path-osx)))
   ;; TODO for windows and mac
   (global-set-key [f9] 'sa1-open-directory-shell)
-  (global-set-key [f10] 'delete-frame)
+  ;; TODO yes-or-no-p alternative operation
+  ;; (global-set-key [f10] 'delete-frame)
 
   ;; when windows
   (when (eq system-type 'windows-nt)
@@ -74,7 +78,6 @@
 ;;       (message "my-log:: sa1/init-plantuml-mode init")
 ;;       (setq puml-plantuml-jar-path "~/.otherTools/plantuml.jar")))
 ;;   )
-
 
 (defun sa1/init-paredit ()
   "Initialize my package"
