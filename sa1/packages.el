@@ -70,10 +70,7 @@
   (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
 
   ;; some useful actions
-  (evil-leader/set-key "bD" (lambda ()
-                              (interactive)
-                              (kill-this-buffer)
-                              (evil-window-delete)))
+  (evil-leader/set-key "bD" 'kill-buffer-and-window)
   )
 
 ;; (defun sa1/init-puml-mode ()
