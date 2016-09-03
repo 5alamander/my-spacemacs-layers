@@ -7,3 +7,6 @@
 * TASKS
 
 ** TODO slime-company
+
+* links
+  [[file:packages.el][packages]]
