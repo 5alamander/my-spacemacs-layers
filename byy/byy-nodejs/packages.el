@@ -30,7 +30,8 @@
 ;;; Code:
 
 (defconst byy-nodejs-packages
-  '(nodejs-repl))
+  '(nodejs-repl
+    gulp-task-runner))
 
 (defun byy-nodejs/init-nodejs-repl ()
   (use-package nodejs-repl
@@ -45,6 +46,12 @@
       "sni" 'nodejs-repl
       "snb" 'nodejs-repl-send-buffer
       "sne" 'nodejs-repl-send-last-sexp)
+    :defer t))
+
+;;; just load this package
+(defun byy-nodejs/init-gulp-task-runner ()
+  (use-package gulp-task-runner
+    :init
     :defer t))
 
 ;;; packages.el ends here
