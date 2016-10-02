@@ -33,7 +33,9 @@
   "run some function"
   (message "my-log:: sa1/init-my-package")
 
-  ;; (slime-setup '(slime-fancy slime-company))
+  ;; for chez scheme
+  (require 'cmuscheme)
+  (setq scheme-program-name "scheme")
 
   ;; paren-mode
   (show-paren-mode)
