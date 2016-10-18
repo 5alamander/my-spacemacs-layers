@@ -1,20 +1,20 @@
 (message "my-log:: sa1-funcs.el")
 
-;;; temp use yasnippet template
-(defun sa1-yasnippet-string-to-template (string)
-  (let ((count 1))
-    (labels ((rep (text)
-                  (let ((replace (format "${%d:%s}" count text)))
-                    (incf count) replace)))
-      (replace-regexp-in-string "[a-zA-Z0-9]+" #'rep string))))
+;; ;;; temp use yasnippet template
+;; (defun sa1-yasnippet-string-to-template (string)
+;;   (let ((count 1))
+;;     (labels ((rep (text)
+;;                   (let ((replace (format "${%d:%s}" count text)))
+;;                     (incf count) replace)))
+;;       (replace-regexp-in-string "[a-zA-Z0-9]+" #'rep string))))
 
-;;; use current line to create a template
-(defun sa1-yasnippet-current-line ()
-  (interactive)
-  (let ((current-line (string-trim-right (thing-at-point 'line t))))
-    (end-of-line)
-    (newline-and-indent)
-    (yas-expand-snippet (sa1-yasnippet-string-to-template (string-trim current-line)))))
+;; ;;; use current line to create a template
+;; (defun sa1-yasnippet-current-line ()
+;;   (interactive)
+;;   (let ((current-line (string-trim-right (thing-at-point 'line t))))
+;;     (end-of-line)
+;;     (newline-and-indent)
+;;     (yas-expand-snippet (sa1-yasnippet-string-to-template (string-trim current-line)))))
 
 ;;; window function, find window in direction and run functor
 (defun sa1-window-find-and-run (dir arg window functor)

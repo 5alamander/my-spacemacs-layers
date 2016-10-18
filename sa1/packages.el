@@ -34,14 +34,14 @@
   (message "my-log:: sa1/init-my-package")
 
   ;; for chez scheme
-  (require 'cmuscheme)
-  (setq scheme-program-name "scheme")
+  ;; (require 'cmuscheme)
+  ;; (setq scheme-program-name "scheme")
 
   ;; paren-mode
   (show-paren-mode)
 
   ;; set a global key
-  (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
+  ;; (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
   (global-set-key [M-f12] (case system-type
                             ('windows-nt 'sa1-open-buffer-path)
@@ -77,8 +77,8 @@
   ;; (evil-leader/set-key "bD" 'kill-buffer-and-window)
 
   ;; evil ace
-  (evil-leader/set-key "SPC" 'evil-ace-jump-word-mode)
-  (evil-leader/set-key "y" 'evil-ace-jump-line-mode)
+  (evil-leader/set-key "SPC" 'evil-avy-goto-word-or-subword-1)
+  (evil-leader/set-key "y" 'evil-avy-goto-line)
   )
 
 ;; (defun sa1/init-puml-mode ()
