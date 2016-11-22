@@ -61,7 +61,8 @@ the run input `labda' (functor window other-window)"
                         (dired-get-filename)
                       (or (buffer-file-name) "")))
          (directory (file-name-directory file-name)))
-    (shell-command (concat "open -a terminal \"" directory "\""))))
+    ;; application terminal | iterm
+    (shell-command (concat "open -a iterm \"" directory "\""))))
 
 ;;; set to "fy", replace the "spacemacs/show-and-copy-buffer-filename"
 (defun sa1-copy-buffer-name (choice)
