@@ -67,14 +67,15 @@
           (expand-file-name "~/.otherTools/plantuml.jar")))
 
   ;; set evil key-binding
-  (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
-  (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  ;; (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  ;; (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
   ;; just as the OSX
   (define-key evil-normal-state-map (kbd "M-w") 'kill-buffer-and-window)
   (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
 
   ;; some useful actions
   ;; (evil-leader/set-key "bD" 'kill-buffer-and-window)
+  (define-key dired-mode-map (kbd "I") 'dired-kill-subdir)
 
   ;; evil ace
   (evil-leader/set-key "SPC" 'evil-avy-goto-word-or-subword-1)
