@@ -1,0 +1,20 @@
+# key: locale
+# name: Plug Locale
+# --
+
+defmodule ${0:Plugs.Locale} do
+  import Plug.Conn
+
+  @regions ["en", "zh"]
+
+  def init(_opts), do: nil
+
+  def call(conn, _opts) do
+    case conn.params["locale"] || get_session(conn, :locale) do
+      locale when locale in @regions ->
+        Gettext.put_locale(Kawamoji.Web.Gettext, locale)
+        conn |> put_session(:locale, locale)
+      _ -> conn
+    end
+  end
+end
