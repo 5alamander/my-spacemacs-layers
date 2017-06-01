@@ -34,8 +34,8 @@
 
 (defun byy/post-init-company ()
   (progn
-    (setq company-minimum-prefix-length 1
-          company-idle-delay 0.08)
+    (setq company-minimum-prefix-length 2
+          company-idle-delay 0.1)
     ;; (when (configuration-layer/package-usedp 'company)
     ;;   (spacemacs|add-company-hook json-mode))
     ))

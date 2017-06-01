@@ -33,10 +33,6 @@
   "run some function"
   (message "my-log:: sa1/init-my-package")
 
-  ;; for chez scheme
-  ;; (require 'cmuscheme)
-  ;; (setq scheme-program-name "scheme")
-
   ;; paren-mode
   (show-paren-mode)
 
@@ -48,8 +44,6 @@
                             ('darwin 'sa1-open-buffer-path-osx)))
   ;; TODO for windows and mac
   (global-set-key [f9] 'sa1-open-directory-shell)
-  ;; TODO yes-or-no-p alternative operation
-  ;; (global-set-key [f10] 'delete-frame)
 
   ;; when windows
   (when (eq system-type 'windows-nt)
@@ -80,6 +74,17 @@
   ;; evil ace
   (evil-leader/set-key "SPC" 'evil-avy-goto-word-or-subword-1)
   (evil-leader/set-key "y" 'evil-avy-goto-line)
+
+  ;; cider figwheel repl
+  (defun sa1-cider-figwheel ()
+    (interactive)
+    (save-some-buffers)
+    (with-current-buffer (cider-current-repl-buffer)
+      (goto-char (point-max))
+      (insert "(require 'figwheel-sidecar.repl-api)
+               (figwheel-sidecar.repl-api/start-figwheel!) ; idempotent
+               (figwheel-sidecar.repl-api/cljs-repl)")
+      (cider-repl-return)))
   )
 
 ;; (defun sa1/init-puml-mode ()
