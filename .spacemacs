@@ -1,0 +1,1 @@
+/Users/Salamander/.spacemacs
