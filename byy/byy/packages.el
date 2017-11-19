@@ -30,14 +30,26 @@
 ;;; Code:
 
 (defconst byy-packages
-  '(company))
+  '(company evil))
 
 (defun byy/post-init-company ()
-  (progn
-    (setq company-minimum-prefix-length 2
-          company-idle-delay 0.1)
-    ;; (when (configuration-layer/package-usedp 'company)
-    ;;   (spacemacs|add-company-hook json-mode))
-    ))
+  ;; (global-company-mode)
+  (setq company-minimum-prefix-length 2
+        company-idle-delay 0.1)
+  )
+
+(defun byy/post-init-evil ()
+  ;; evil ace
+  (evil-leader/set-key "SPC" 'evil-avy-goto-word-or-subword-1)
+  (evil-leader/set-key "y" 'evil-avy-goto-line)
+
+  ;; set evil key-binding
+  ;; (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  ;; (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
+  ;; just as the OSX
+  ;; (define-key evil-normal-state-map (kbd "M-w") 'kill-buffer-and-window)
+  (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
+
+  )
 
 ;;; packages.el ends here

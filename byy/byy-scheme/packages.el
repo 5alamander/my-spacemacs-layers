@@ -32,17 +32,22 @@
 (defconst byy-scheme-packages
   '(geiser paredit))
 
-(defun byy-scheme/post-init-geiser ()
-
+(defun byy-scheme/post-init-paredit ()
   ;; scheme mode use paredit
   (add-hook 'scheme-mode-hook 'paredit-mode)
-  ;; .sls files
-  (add-to-list 'auto-mode-alist '("\\.sls\\'" . scheme-mode))
+  )
 
-  (setq geiser-active-implementations '(chez)
+(defun byy-scheme/post-init-geiser ()
+  ;; .sls files
+  (use-package scheme-mode
+    :mode "\\.sls\\'")
+
+  ;; set geiser configs
+  (setq geiser-active-implementations '(chez racket)
         geiser-chez-binary "chez")
 
-  (when (eq system-type 'darwin)
+  ;; when system is mac
+  (when (spacemacs/system-is-mac)
     ;; set environment config
     (setenv "CHEZSCHEMELIBDIRS" "~/src/scheme-space:~/src/scheme/thunderchez"))
   )

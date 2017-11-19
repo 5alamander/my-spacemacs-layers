@@ -37,16 +37,15 @@
   (show-paren-mode)
 
   ;; set a global key
-  ;; (global-set-key (kbd "C-c TAB") 'sa1-yasnippet-current-line)
-  (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
   (global-set-key [M-f12] (case system-type
                             ('windows-nt 'sa1-open-buffer-path)
                             ('darwin 'sa1-open-buffer-path-osx)))
   ;; TODO for windows and mac
   (global-set-key [f9] 'sa1-open-directory-shell)
+  (define-key yas-minor-mode-map (kbd "<C-tab>") 'helm-yas-complete)
 
   ;; when windows
-  (when (eq system-type 'windows-nt)
+  (when (spacemacs/system-is-mswindows)
     ;; js tern mode path
     (setq tern-command                  ; the default is '("node" "tern")
           '("node" "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\tern\\bin\\tern"))
@@ -60,20 +59,9 @@
     (setq org-plantuml-jar-path
           (expand-file-name "~/.otherTools/plantuml.jar")))
 
-  ;; set evil key-binding
-  ;; (define-key evil-emacs-state-map (kbd "C-w") 'sa1-cut-line-or-region)
-  ;; (define-key evil-hybrid-state-map (kbd "C-w") 'sa1-cut-line-or-region)
-  ;; just as the OSX
-  (define-key evil-normal-state-map (kbd "M-w") 'kill-buffer-and-window)
-  (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
-
   ;; some useful actions
   ;; (evil-leader/set-key "bD" 'kill-buffer-and-window)
   (define-key dired-mode-map (kbd "I") 'dired-kill-subdir)
-
-  ;; evil ace
-  (evil-leader/set-key "SPC" 'evil-avy-goto-word-or-subword-1)
-  (evil-leader/set-key "y" 'evil-avy-goto-line)
 
   ;; cider figwheel repl
   (defun sa1-cider-figwheel ()
