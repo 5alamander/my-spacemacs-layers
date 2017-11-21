@@ -22,29 +22,29 @@
      org-capture-templates
      '(("t" "Todos")
        ("tt" "Todo [region]" entry
-        (file+headline (concat org-directory "/gtd.org") "Task")
+        (file+headline "gtd.org" "Task")
         "* TODO %?\n %i\n" :empty-lines 1)
        ("tl" "Todo [region, file-link]" entry
-        (file+headline (concat org-directory "/gtd.org") "Task")
+        (file+headline "gtd.org" "Task")
         "* TODO %?\n %i\n %a %f" :empty-lines 1)
 
        ("i" "Inspires")
        ("ii" "Inspire [region]" entry
-        (file+headline (concat org-directory "/inspiration.org") "Inspire")
+        (file+headline "inspiration.org" "Inspire")
         "* %?\n %i\n" :empty-lines 1)
        ("ia" "Inspire [region, clipboard, file-link]" entry
-        (file+headline (concat org-directory "/inspiration.org") "Inspire")
+        (file+headline "inspiration.org" "Inspire")
         "* %?\n %i\n %x\n %a %f" :empty-lines 1)
 
        ("n" "Notes")
        ("nn" "Note [region]" entry
-        (file+headline (concat org-directory "/note.org") "Note")
+        (file+headline "note.org" "Note")
         "* %?\n %i\n" :empty-lines 1)
        ("nt" "Note [region & time]" entry
-        (file+headline (concat org-directory "/note.org") "Note")
+        (file+headline "note.org" "Note")
         "* %?\n %i\n%U" :empty-lines 1)
 
-       ("l" "Link [clipboard]" plain (file (concat org-directory "/links.org"))
+       ("l" "Link [clipboard]" plain (file "links.org")
         "- %?\n %x\n" :empty-lines 1))
      )
 
